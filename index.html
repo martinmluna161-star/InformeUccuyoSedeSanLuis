@@ -29,7 +29,7 @@
   /* ── BRAND HEADER ── */
   .brand-header {
     width:100%;
-    background:#0e4429;
+    background:#0b3322;
     padding:0;
     display:block;
     line-height:0;
@@ -38,8 +38,7 @@
     width:100%;
     height:auto;
     display:block;
-    max-height:100px;
-    object-fit:cover;
+    object-fit:contain;
     object-position:left center;
   }
 
@@ -56,8 +55,8 @@
     background:radial-gradient(circle, rgba(26,92,56,0.18) 0%, transparent 68%);
     pointer-events:none;
   }
-  .rh-inner { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; }
-  .rh-left {}
+  .rh-inner { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:nowrap; gap:20px; }
+  .rh-left { flex:1; min-width:0; }
   .rh-badge {
     display:inline-flex; align-items:center; gap:7px;
     background:rgba(26,92,56,0.25); border:1px solid rgba(42,138,84,0.35);
@@ -262,7 +261,7 @@
   @media(max-width:640px){
     /* Header */
     .report-header { padding:24px 20px 22px; }
-    .rh-inner { flex-direction:column; gap:14px; }
+    .rh-inner { flex-direction:column; flex-wrap:wrap; gap:14px; }
     .rh-right { text-align:left; }
     h1 { font-size:clamp(22px,6vw,30px); }
     .rh-badge { font-size:9.5px; padding:4px 10px; }
