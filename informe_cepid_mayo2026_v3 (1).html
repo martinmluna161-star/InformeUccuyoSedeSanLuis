@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe de Gestión UCCuyo Sede San Luis — Mayo 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --green: #3fb950;
+    --amber: #e8a838;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --gold: #d4af37;
+    --purple: #bc8cff;
+    --teal: #39d0b0;
+    --ucc-green: #1a5c38;
+    --ucc-green-light: #2a8a54;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; line-height:1.6; }
+
+  /* ── BRAND HEADER ── */
+  .brand-header {
+    width:100%;
+    background:#0e4429;
+    padding:0;
+    display:block;
+    line-height:0;
+  }
+  .brand-header img {
+    width:100%;
+    height:auto;
+    display:block;
+    max-height:100px;
+    object-fit:cover;
+    object-position:left center;
+  }
+
+  /* ── REPORT HEADER ── */
+  .report-header {
+    padding: 36px 52px 32px;
+    background: linear-gradient(180deg, #0e1e14 0%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .report-header::after {
+    content:''; position:absolute; top:-60px; right:-40px;
+    width:380px; height:380px;
+    background:radial-gradient(circle, rgba(26,92,56,0.18) 0%, transparent 68%);
+    pointer-events:none;
+  }
+  .rh-inner { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; }
+  .rh-left {}
+  .rh-badge {
+    display:inline-flex; align-items:center; gap:7px;
+    background:rgba(26,92,56,0.25); border:1px solid rgba(42,138,84,0.35);
+    border-radius:999px; padding:4px 13px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.09em;
+    color:#5ecb8a; text-transform:uppercase; margin-bottom:14px;
+  }
+  .rh-badge::before { content:''; width:7px; height:7px; background:#5ecb8a; border-radius:50%; animation:blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+  h1 { font-family:'DM Serif Display',serif; font-size:clamp(24px,3.6vw,40px); font-weight:400; letter-spacing:-0.02em; line-height:1.15; color:#fff; }
+  h1 em { font-style:italic; color:#5ecb8a; }
+  .rh-unit { margin-top:10px; font-size:12.5px; color:var(--muted); }
+  .rh-unit span { color:#5ecb8a; font-weight:500; }
+  .rh-right { text-align:right; flex-shrink:0; }
+  .rh-right p { font-size:12px; color:var(--muted); margin-top:3px; }
+  .rh-right strong { color:#5ecb8a; }
+
+  /* ── ALERT / CONTEXT BAR ── */
+  .ctx-bar {
+    background:linear-gradient(90deg,rgba(26,92,56,.18),rgba(26,92,56,.06));
+    border-left:3px solid #2a8a54;
+    padding:11px 52px; font-size:13px; color:#7dd4a8;
+    display:flex; align-items:center; gap:10px;
+  }
+
+  /* ── MAIN / LAYOUT ── */
+  main { padding:40px 52px; max-width:1260px; margin:0 auto; }
+  section { margin-bottom:52px; }
+
+  .sec-label {
+    font-size:10.5px; font-weight:600; letter-spacing:0.13em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .sec-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  /* ── METRIC CARDS ── */
+  .metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; }
+  .mc {
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:20px 18px; position:relative; overflow:hidden;
+    transition:transform .2s,border-color .2s;
+  }
+  .mc:hover { transform:translateY(-2px); border-color:rgba(42,138,84,.35); }
+  .mc::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; border-radius:12px 12px 0 0; background:var(--cc,var(--border)); }
+  .mc.g{--cc:var(--green)} .mc.a{--cc:var(--amber)} .mc.r{--cc:var(--red)}
+  .mc.b{--cc:var(--blue)} .mc.gold{--cc:var(--gold)} .mc.t{--cc:var(--teal)}
+  .mc.p{--cc:var(--purple)} .mc.ug{--cc:#2a8a54}
+  .mc-lbl { font-size:10.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .mc-val { font-family:'DM Serif Display',serif; font-size:38px; line-height:1; letter-spacing:-0.02em; }
+  .mc-val.g{color:var(--green)} .mc-val.a{color:var(--amber)} .mc-val.r{color:var(--red)}
+  .mc-val.b{color:var(--blue)} .mc-val.gold{color:var(--gold)} .mc-val.t{color:var(--teal)}
+  .mc-val.p{color:var(--purple)} .mc-val.ug{color:#5ecb8a}
+  .mc-sub { font-size:11.5px; color:var(--muted); margin-top:5px; }
+
+  /* ── TWO / THREE COL ── */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media(max-width:860px){.two-col{grid-template-columns:1fr}}
+
+  /* ── CARD BASE ── */
+  .cc { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:22px 24px; }
+  .cc-title { font-size:11px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
+
+  /* ── TABLE CARD ── */
+  .tcard { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  .thead { padding:17px 22px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+  .thead-title { font-weight:600; font-size:13.5px; }
+  .thead-sub { font-size:11px; color:var(--muted); margin-top:2px; }
+  table { width:100%; border-collapse:collapse; }
+  th { padding:9px 18px; text-align:left; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); background:var(--surface2); border-bottom:1px solid var(--border); }
+  td { padding:11px 18px; font-size:12.5px; border-bottom:1px solid rgba(48,54,61,.5); }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:rgba(255,255,255,.02); }
+
+  /* ── COST BADGES ── */
+  .cb { display:inline-block; padding:2px 8px; border-radius:5px; font-size:11.5px; font-weight:600; }
+  .cb-g { background:rgba(63,185,80,.18); color:#3fb950; }
+  .cb-a { background:rgba(232,168,56,.18); color:#e8a838; }
+  .cb-r { background:rgba(248,81,73,.15); color:#f85149; }
+
+  /* ── STATUS ── */
+  .st-on { display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:600; color:#3fb950; }
+  .st-on::before { content:''; width:6px; height:6px; border-radius:50%; background:#3fb950; animation:blink 2s infinite; }
+  .st-off { font-size:10.5px; font-weight:500; color:var(--muted); }
+
+  /* ── EFF BAR ── */
+  .eb { display:flex; align-items:center; gap:8px; }
+  .et { width:60px; background:var(--surface2); border-radius:999px; height:6px; overflow:hidden; }
+  .ef { height:100%; border-radius:999px; background:linear-gradient(90deg,#2a8a54,#5ecb8a); }
+  .ev { font-size:11px; color:var(--muted); }
+
+  /* ── BAR CHART ── */
+  .bar-chart { display:flex; flex-direction:column; gap:10px; }
+  .br { display:flex; align-items:center; gap:10px; }
+  .bn { font-size:11px; color:var(--muted); width:155px; flex-shrink:0; text-align:right; line-height:1.3; }
+  .bt { flex:1; background:var(--surface2); border-radius:999px; height:9px; overflow:hidden; }
+  .bf { height:100%; border-radius:999px; }
+  .bv { font-size:11.5px; font-weight:600; width:30px; flex-shrink:0; }
+
+  /* ── DONUT ── */
+  .donut-wrap { display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .lg-item { display:flex; align-items:center; gap:9px; margin-bottom:9px; font-size:12.5px; }
+  .ld { width:9px; height:9px; border-radius:3px; flex-shrink:0; }
+  .ll { color:var(--muted); flex:1; }
+  .lv { font-family:'DM Serif Display',serif; font-size:15px; }
+
+  /* ── CRM FUNNEL ── */
+  .funnel { display:flex; flex-direction:column; gap:5px; }
+  .fs { display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:8px; background:var(--surface2); border:1px solid var(--border); }
+  .fn { font-family:'DM Serif Display',serif; font-size:19px; min-width:38px; }
+  .fl { flex:1; font-size:12.5px; }
+  .fp { font-size:10.5px; color:var(--muted); }
+  .fa { text-align:center; font-size:11px; color:var(--border); padding:1px 0; }
+
+  /* ── NOTE BOXES ── */
+  .nb { padding:12px 15px; border-radius:8px; font-size:11.5px; line-height:1.65; margin-top:13px; }
+  .nb-g  { background:rgba(26,92,56,.15);  border:1px solid rgba(42,138,84,.3);  color:#7dd4a8; }
+  .nb-a  { background:rgba(232,168,56,.08); border:1px solid rgba(232,168,56,.22); color:#f0c860; }
+  .nb-b  { background:rgba(88,166,255,.08); border:1px solid rgba(88,166,255,.2);  color:#89b8ff; }
+  .nb-r  { background:rgba(248,81,73,.08);  border:1px solid rgba(248,81,73,.2);   color:#ffa198; }
+
+  /* ── COMPARISON TABLE ── */
+  .cmp-row { display:flex; align-items:center; gap:12px; padding:9px 0; border-bottom:1px solid rgba(48,54,61,.4); }
+  .cmp-row:last-child { border-bottom:none; }
+  .cmp-lbl { font-size:12px; color:var(--muted); width:180px; flex-shrink:0; }
+  .cmp-old { font-size:12.5px; color:var(--red); width:90px; text-align:center; }
+  .cmp-new { font-size:12.5px; color:var(--green); font-weight:600; width:90px; text-align:center; }
+  .cmp-d { font-size:11px; color:var(--green); flex:1; }
+
+  /* ── TIMELINE ── */
+  .timeline { position:relative; padding-left:28px; }
+  .timeline::before { content:''; position:absolute; left:9px; top:8px; bottom:8px; width:2px; background:var(--border); border-radius:999px; }
+  .tl-item { position:relative; padding-bottom:22px; }
+  .tl-item:last-child { padding-bottom:0; }
+  .tl-dot { position:absolute; left:-23px; top:5px; width:12px; height:12px; border-radius:50%; background:var(--dot-c,#2a8a54); border:2px solid var(--dot-c,#2a8a54); }
+  .tl-date { font-size:10.5px; color:var(--muted); font-weight:600; letter-spacing:.06em; margin-bottom:3px; }
+  .tl-title { font-size:13.5px; font-weight:600; margin-bottom:4px; }
+  .tl-desc { font-size:12.5px; color:var(--muted); line-height:1.65; }
+
+  /* ── WORKETING CARD ── */
+  .worketing-card {
+    background:linear-gradient(135deg,#0b1f16 0%,#0e2a1c 100%);
+    border:1px solid rgba(57,208,176,.22); border-radius:12px;
+    padding:28px 30px; position:relative; overflow:hidden;
+  }
+  .worketing-card::before {
+    content:''; position:absolute; top:-50px; right:-30px;
+    width:260px; height:260px;
+    background:radial-gradient(circle,rgba(57,208,176,.09) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .wk-tag {
+    display:inline-flex; align-items:center; gap:7px;
+    background:rgba(57,208,176,.1); border:1px solid rgba(57,208,176,.25);
+    border-radius:999px; padding:4px 12px;
+    font-size:10.5px; font-weight:600; letter-spacing:.08em;
+    color:var(--teal); text-transform:uppercase; margin-bottom:13px;
+  }
+  .wk-title { font-family:'DM Serif Display',serif; font-size:26px; color:#fff; margin-bottom:5px; }
+  .wk-sub { font-size:12.5px; color:rgba(255,255,255,.5); margin-bottom:16px; }
+  .wk-body { font-size:12.5px; color:rgba(255,255,255,.65); line-height:1.75; }
+  .wk-body strong { color:rgba(255,255,255,.88); }
+  .wk-stat { display:flex; gap:20px; margin-top:18px; flex-wrap:wrap; }
+  .wk-s { background:rgba(57,208,176,.08); border:1px solid rgba(57,208,176,.18); border-radius:8px; padding:12px 18px; text-align:center; flex:1; min-width:100px; }
+  .wk-s .val { font-family:'DM Serif Display',serif; font-size:22px; color:var(--teal); }
+  .wk-s .lbl { font-size:10.5px; color:var(--muted); margin-top:3px; }
+
+  /* ── OBJECTIVES SECTION ── */
+  .obj-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+  .obj-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:20px 22px;
+    border-top:3px solid var(--obj-c,#2a8a54);
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .obj-num { font-family:'DM Serif Display',serif; font-size:28px; color:var(--obj-c,#5ecb8a); line-height:1; }
+  .obj-title { font-weight:600; font-size:13px; }
+  .obj-text { font-size:12px; color:var(--muted); line-height:1.65; }
+  .obj-kpi { display:inline-block; margin-top:6px; padding:3px 10px; border-radius:5px; font-size:10.5px; font-weight:600; background:rgba(42,138,84,.15); border:1px solid rgba(42,138,84,.25); color:#5ecb8a; }
+
+  /* ── INSIGHT CARDS ── */
+  .insights { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+  .ic { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--ic-c,var(--border)); border-radius:12px; padding:20px; }
+  .ic.crit{--ic-c:var(--red)} .ic.warn{--ic-c:var(--amber)} .ic.pos{--ic-c:var(--green)} .ic.info{--ic-c:#2a8a54}
+  .ic-icon { font-size:18px; margin-bottom:8px; }
+  .ic-title { font-weight:600; font-size:13px; margin-bottom:5px; }
+  .ic-text { font-size:12px; color:var(--muted); line-height:1.65; }
+
+  /* ── DIVIDER PILL ── */
+  .section-intro {
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:16px 22px; margin-bottom:22px;
+    font-size:13px; color:var(--muted); line-height:1.7;
+    border-left:3px solid #2a8a54;
+  }
+  .section-intro strong { color:var(--text); }
+
+  footer { border-top:1px solid var(--border); padding:24px 52px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:11.5px; color:var(--muted); }
+  footer strong { color:#5ecb8a; }
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media(max-width:640px){
+    /* Header */
+    .report-header { padding:24px 20px 22px; }
+    .rh-inner { flex-direction:column; gap:14px; }
+    .rh-right { text-align:left; }
+    h1 { font-size:clamp(22px,6vw,30px); }
+    .rh-badge { font-size:9.5px; padding:4px 10px; }
+
+    /* Context bar */
+    .ctx-bar { padding:10px 20px; font-size:12px; }
+
+    /* Main padding */
+    main { padding:24px 16px; }
+    section { margin-bottom:36px; }
+
+    /* Section labels */
+    .sec-label { font-size:9.5px; letter-spacing:0.1em; }
+
+    /* Metric cards — 2 col on mobile */
+    .metrics { grid-template-columns:1fr 1fr; gap:10px; }
+    .mc { padding:14px 12px; }
+    .mc-val { font-size:30px; }
+    .mc-val[style*="font-size:30px"] { font-size:24px !important; }
+    .mc-val[style*="font-size:26px"] { font-size:22px !important; }
+    .mc-lbl { font-size:9px; }
+    .mc-sub { font-size:10px; }
+
+    /* Two col → single col */
+    .two-col { grid-template-columns:1fr; }
+
+    /* Tables: scroll horizontally */
+    .tcard { overflow-x:auto; }
+    table { min-width:520px; }
+    th { padding:8px 12px; font-size:9.5px; }
+    td { padding:9px 12px; font-size:11.5px; }
+    .thead { padding:14px 16px; }
+    .thead-title { font-size:12.5px; }
+
+    /* Cards padding */
+    .cc { padding:16px 16px; }
+    .cc-title { font-size:10px; }
+
+    /* Bar chart labels */
+    .bn { width:100px; font-size:10px; }
+
+    /* Comparison table */
+    .cmp-row { flex-wrap:wrap; gap:6px; }
+    .cmp-lbl { width:100%; font-size:11px; font-weight:600; color:var(--text); border-bottom:none; padding-bottom:0; }
+    .cmp-old { width:auto; font-size:11.5px; }
+    .cmp-new { width:auto; font-size:11.5px; }
+    .cmp-d { width:100%; font-size:10.5px; }
+
+    /* Timeline */
+    .timeline { padding-left:22px; }
+    .tl-dot { left:-19px; }
+    .tl-title { font-size:12.5px; }
+    .tl-desc { font-size:11.5px; }
+
+    /* Worketing */
+    .worketing-card { padding:20px 18px; }
+    .wk-title { font-size:22px; }
+    .wk-stat { gap:10px; }
+    .wk-s { padding:10px 12px; }
+    .wk-s .val { font-size:18px; }
+
+    /* Objectives grid */
+    .obj-grid { grid-template-columns:1fr; }
+
+    /* Section intro */
+    .section-intro { padding:13px 15px; font-size:12px; }
+
+    /* Note boxes */
+    .nb { font-size:11px; }
+
+    /* Donut wrap — stack vertically */
+    .donut-wrap { flex-direction:column; align-items:flex-start; }
+    .donut-wrap svg { align-self:center; }
+
+    /* Funnel */
+    .fn { font-size:17px; min-width:32px; }
+    .fl { font-size:11.5px; }
+
+    /* Footer */
+    footer { padding:18px 20px; flex-direction:column; gap:6px; font-size:11px; }
+  }
+
+  @media(max-width:400px){
+    .metrics { grid-template-columns:1fr; }
+    h1 { font-size:20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BRAND HEADER -->
+<div class="brand-header">
+  <img src="data:image/png;base64,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" alt="Universidad Católica de Cuyo San Luis">
+</div>
+
+<!-- REPORT HEADER -->
+<div class="report-header">
+  <div class="rh-badge">Informe Confidencial · Logica Consultoría</div>
+  <div class="rh-inner">
+    <div class="rh-left">
+      <h1>Informe de Gestión<br><em>UCCuyo Sede San Luis · Mayo 2026</em></h1>
+      <div class="rh-unit">UCCuyo Sede San Luis · <span>Unidad de Posgrados y Formación Continua</span></div>
+    </div>
+    <div class="rh-right">
+      <p>Cierre: 02 de Junio, 2026</p>
+      <p>Período: <strong>Mayo 2026</strong></p>
+      <p>Elaborado por <strong>Logica</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT BAR -->
+<div class="ctx-bar">
+  📋&nbsp; Primer mes con registro formal en Odoo CRM — adopción completa del equipo CEPID a partir del <strong style="color:#fff">&nbsp;22-05-2026</strong>. Los datos de pipeline reflejan los últimos 10 días del mes.
+</div>
+
+<main>
+
+  <!-- ════════════════════════════════════
+       01 · RESUMEN EJECUTIVO
+  ════════════════════════════════════ -->
+  <section>
+    <div class="sec-label">01 — Resumen Ejecutivo · Mayo 2026</div>
+    <div class="metrics">
+      <div class="mc ug">
+        <div class="mc-lbl">Leads Captados (Meta)</div>
+        <div class="mc-val ug">340</div>
+        <div class="mc-sub">conversaciones totales</div>
+      </div>
+      <div class="mc gold">
+        <div class="mc-lbl">Inversión Meta</div>
+        <div class="mc-val gold" style="font-size:30px">$305</div>
+        <div class="mc-sub">USD · 100% ejecutado</div>
+      </div>
+      <div class="mc g">
+        <div class="mc-lbl">CPL Promedio</div>
+        <div class="mc-val g" style="font-size:30px">$0.90</div>
+        <div class="mc-sub">USD por conversación</div>
+      </div>
+      <div class="mc t">
+        <div class="mc-lbl">Alcance Total</div>
+        <div class="mc-val t" style="font-size:26px">70.418</div>
+        <div class="mc-sub">audiencia impactada</div>
+      </div>
+      <div class="mc a">
+        <div class="mc-lbl">Pipeline CRM</div>
+        <div class="mc-val a">21</div>
+        <div class="mc-sub">leads desde 22/05</div>
+      </div>
+      <div class="mc p">
+        <div class="mc-lbl">Líneas Activas Cierre</div>
+        <div class="mc-val p">5</div>
+        <div class="mc-sub">campañas encendidas a junio</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       02 · PERFORMANCE DE CAMPAÑAS META
+  ════════════════════════════════════ -->
+  <section>
+    <div class="sec-label">02 — Performance de Campañas · Meta Ads Mayo 2026</div>
+
+    <div class="section-intro">
+      <strong>Mayo fue un mes de depuración y optimización del ecosistema de campañas.</strong> Se identificaron y desactivaron las líneas con CPL elevado, reasignando el presupuesto a los formatos de mayor rendimiento. El mes cierra con <strong>5 líneas activas configuradas para escalar durante junio</strong>, todas con CPL por debajo del promedio general.
+    </div>
+
+    <!-- CAMPAÑAS ACTIVAS -->
+    <div class="tcard" style="margin-bottom:20px">
+      <div class="thead">
+        <div>
+          <div class="thead-title">✅ Campañas Activas — Encendidas al inicio de Junio</div>
+          <div class="thead-sub">5 líneas en producción · Las de mayor rendimiento del mes</div>
+        </div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--green)">211 conv.</div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Estado</th><th>Campaña</th><th>Leads</th><th>CPL</th><th>Gastado</th><th>Alcance</th><th>Rendimiento</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="st-on">Activa</span></td>
+            <td style="font-weight:500">Carrusel Gerontología – Num nuevo</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:17px;color:#5ecb8a">71</span></td>
+            <td><span class="cb cb-g">$0.30</span></td>
+            <td style="color:var(--muted)">$21.51</td>
+            <td style="color:var(--muted)">7.659</td>
+            <td><div class="eb"><div class="et"><div class="ef" style="width:100%"></div></div><div class="ev">⭐ top</div></div></td>
+          </tr>
+          <tr>
+            <td><span class="st-on">Activa</span></td>
+            <td style="font-weight:500">Carrusel Gestión de Negocios – Num nuevo</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:17px;color:#5ecb8a">68</span></td>
+            <td><span class="cb cb-g">$0.32</span></td>
+            <td style="color:var(--muted)">$21.78</td>
+            <td style="color:var(--muted)">6.008</td>
+            <td><div class="eb"><div class="et"><div class="ef" style="width:94%"></div></div><div class="ev">⭐ top</div></div></td>
+          </tr>
+          <tr>
+            <td><span class="st-on">Activa</span></td>
+            <td style="font-weight:500">Carrusel Fotografía Forense</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:17px;color:#5ecb8a">29</span></td>
+            <td><span class="cb cb-g">$0.46</span></td>
+            <td style="color:var(--muted)">$13.44</td>
+            <td style="color:var(--muted)">4.457</td>
+            <td><div class="eb"><div class="et"><div class="ef" style="width:66%"></div></div><div class="ev">bueno</div></div></td>
+          </tr>
+          <tr>
+            <td><span class="st-on">Activa</span></td>
+            <td style="font-weight:500">Carrusel Caprino</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:17px;color:#5ecb8a">25</span></td>
+            <td><span class="cb cb-a">$0.57</span></td>
+            <td style="color:var(--muted)">$14.23</td>
+            <td style="color:var(--muted)">3.287</td>
+            <td><div class="eb"><div class="et"><div class="ef" style="width:52%"></div></div><div class="ev">aceptable</div></div></td>
+          </tr>
+          <tr>
+            <td><span class="st-on">Activa</span></td>
+            <td style="font-weight:500">Reel Filosofía Realista – Num nuevo</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:17px;color:#5ecb8a">18</span></td>
+            <td><span class="cb cb-a">$1.23</span></td>
+            <td style="color:var(--muted)">$22.20</td>
+            <td style="color:var(--muted)">4.098</td>
+            <td><div class="eb"><div class="et"><div class="ef" style="width:24%"></div></div><div class="ev">a mejorar</div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CAMPAÑAS HISTÓRICAS / DECISIONES -->
+    <div class="tcard" style="margin-bottom:22px">
+      <div class="thead">
+        <div>
+          <div class="thead-title">📁 Historial de Optimización — Campañas Desactivadas</div>
+          <div class="thead-sub">Decisiones de reasignación de presupuesto durante el mes</div>
+        </div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--muted)">129 conv.</div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Campaña</th><th>Leads</th><th>CPL</th><th>Gastado</th><th>Criterio de desactivación</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:500">Abril – Examen Internacional IELTS</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--muted)">46</span></td>
+            <td><span class="cb cb-a">$1.35</span></td>
+            <td style="color:var(--muted)">$62.22</td>
+            <td style="font-size:11.5px;color:var(--muted)">Ciclo completo — captación transicional</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500">Mayo – Carrusel Gerontología (v1)</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--muted)">43</span></td>
+            <td><span class="cb cb-a">$0.84</span></td>
+            <td style="color:var(--muted)">$35.93</td>
+            <td style="font-size:11.5px;color:var(--muted)">Reemplazada por versión Num nuevo (↓64% CPL)</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500">Mayo – Carrusel Gestión de Negocios (v1)</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--muted)">16</span></td>
+            <td><span class="cb cb-r">$2.23</span></td>
+            <td style="color:var(--muted)">$35.60</td>
+            <td style="font-size:11.5px;color:var(--red)">CPL elevado — reemplazada (↓86% CPL)</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500">Marzo – Reel Clínica de Cine</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--muted)">9</span></td>
+            <td><span class="cb cb-r">$2.72</span></td>
+            <td style="color:var(--muted)">$24.45</td>
+            <td style="font-size:11.5px;color:var(--red)">CPL no competitivo — presupuesto reasignado</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500">Marzo – Reel Filosofía Realista (v1)</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--muted)">8</span></td>
+            <td><span class="cb cb-r">$4.23</span></td>
+            <td style="color:var(--muted)">$33.86</td>
+            <td style="font-size:11.5px;color:var(--red)">CPL crítico — reemplazada por Num nuevo</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500">Marzo – Diplomatura en Ciberdelitos</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--muted)">6</span></td>
+            <td><span class="cb cb-r">$2.74</span></td>
+            <td style="color:var(--muted)">$16.41</td>
+            <td style="font-size:11.5px;color:var(--muted)">Fin de ciclo del programa</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500">Mayo – Gestión de Negocios (copia)</td>
+            <td><span style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--muted)">1</span></td>
+            <td><span class="cb cb-r">$3.37</span></td>
+            <td style="color:var(--muted)">$3.37</td>
+            <td style="font-size:11.5px;color:var(--muted)">Duplicado — cerrado inmediatamente</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EFECTO NUM NUEVO -->
+    <div class="cc">
+      <div class="cc-title">Aprendizaje del Mes · El Efecto "Num Nuevo" — Impacto del Rediseño Creativo</div>
+      <div style="margin-bottom:14px;font-size:12.5px;color:var(--muted);line-height:1.7">
+        La actualización de canal incorporada en las versiones <em>Num nuevo</em> de Gerontología y Gestión de Negocios generó mejoras sustanciales tanto en volumen como en eficiencia de costo.
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-lbl" style="font-weight:600;color:var(--text);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em">Campaña</div>
+        <div class="cmp-old" style="color:var(--muted);font-size:10px;font-weight:600;text-transform:uppercase">Versión anterior</div>
+        <div class="cmp-new" style="color:var(--muted);font-size:10px;font-weight:600;text-transform:uppercase">Num nuevo</div>
+        <div class="cmp-d" style="font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase">Impacto</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-lbl">Gerontología</div>
+        <div class="cmp-old">$0.84 / conv. · 43 leads</div>
+        <div class="cmp-new">$0.30 / conv. · 71 leads</div>
+        <div class="cmp-d">↓ 64% CPL · ↑ 65% en volumen</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-lbl">Gestión de Negocios</div>
+        <div class="cmp-old">$2.23 / conv. · 16 leads</div>
+        <div class="cmp-new">$0.32 / conv. · 68 leads</div>
+        <div class="cmp-d">↓ 86% CPL · ↑ 325% en volumen</div>
+      </div>
+      <div class="nb nb-g" style="margin-top:14px">
+        ✅ <strong>Metodología validada.</strong> El rediseño creativo con actualización de canal es el principal driver de eficiencia del mes. Aplicar este modelo a todas las campañas activas en junio.
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       03 · CRM — GESTIÓN DE OPORTUNIDADES
+  ════════════════════════════════════ -->
+  <section>
+    <div class="sec-label">03 — Gestión Comercial CRM · Pipeline desde 22-05-2026</div>
+
+    <div class="two-col">
+      <!-- DONUT -->
+      <div class="cc">
+        <div class="cc-title">Estado del Pipeline — 21 leads registrados</div>
+        <div class="donut-wrap">
+          <svg width="150" height="150" viewBox="0 0 150 150" style="flex-shrink:0">
+            <circle cx="75" cy="75" r="56" fill="none" stroke="#1c2333" stroke-width="25"/>
+            <!-- Precio Enviado 13/21=61.9% → 218px -->
+            <circle cx="75" cy="75" r="56" fill="none" stroke="#e8a838" stroke-width="25"
+              stroke-dasharray="218.4 133.2" stroke-dashoffset="0" transform="rotate(-90 75 75)"/>
+            <!-- Propuesta Enviada 7/21=33.3% → 117.6px -->
+            <circle cx="75" cy="75" r="56" fill="none" stroke="#5ecb8a" stroke-width="25"
+              stroke-dasharray="117.6 233.9" stroke-dashoffset="-218.4" transform="rotate(-90 75 75)"/>
+            <!-- Primer Contacto 1/21=4.8% → 16.8px -->
+            <circle cx="75" cy="75" r="56" fill="none" stroke="#58a6ff" stroke-width="25"
+              stroke-dasharray="16.8 335" stroke-dashoffset="-336" transform="rotate(-90 75 75)"/>
+            <text x="75" y="71" text-anchor="middle" fill="#e6edf3" font-family="DM Serif Display,serif" font-size="20">21</text>
+            <text x="75" y="87" text-anchor="middle" fill="#8b949e" font-family="DM Sans,sans-serif" font-size="9.5">leads activos</text>
+          </svg>
+          <div style="flex:1">
+            <div class="lg-item"><div class="ld" style="background:#e8a838"></div><div class="ll">Precio Enviado</div><div class="lv" style="color:#e8a838">13</div></div>
+            <div class="lg-item"><div class="ld" style="background:#5ecb8a"></div><div class="ll">Propuesta Enviada</div><div class="lv" style="color:#5ecb8a">7</div></div>
+            <div class="lg-item"><div class="ld" style="background:#58a6ff"></div><div class="ll">Primer Contacto</div><div class="lv" style="color:#58a6ff">1</div></div>
+            <div style="margin-top:10px;padding:9px 12px;background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.2);border-radius:7px;font-size:11.5px;color:#ffa198">
+              🔴 <strong>1 lead perdido</strong> — Fotografía Forense · Sin motivo detallado
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FUNNEL -->
+      <div class="cc">
+        <div class="cc-title">Embudo Meta → CRM</div>
+        <div class="funnel">
+          <div class="fs">
+            <div class="fn" style="color:#5ecb8a">340</div>
+            <div class="fl">Conversaciones generadas (Meta)</div>
+            <div class="fp">100%</div>
+          </div>
+          <div class="fa">▼ registrado en CRM desde 22/05</div>
+          <div class="fs">
+            <div class="fn" style="color:#58a6ff">21</div>
+            <div class="fl">Leads en Odoo (10 días de operación)</div>
+            <div class="fp">6.2%</div>
+          </div>
+          <div class="fa">▼ avanzaron en pipeline</div>
+          <div class="fs">
+            <div class="fn" style="color:#5ecb8a">7</div>
+            <div class="fl">Propuesta Enviada</div>
+            <div class="fp">33.3%</div>
+          </div>
+          <div class="fa">▼ en etapa de negociación</div>
+          <div class="fs" style="border-color:rgba(232,168,56,.4)">
+            <div class="fn" style="color:#e8a838">13</div>
+            <div class="fl">Precio Enviado — a cerrar en junio</div>
+            <div class="fp">61.9%</div>
+          </div>
+        </div>
+        <div class="nb nb-a" style="margin-top:12px">
+          ⚡ <strong>13 leads en "Precio Enviado"</strong> son la prioridad de conversión para los primeros días de junio. Aplicar regla de seguimiento a 48 horas.
+        </div>
+      </div>
+    </div>
+
+    <!-- LEADS POR PROGRAMA -->
+    <div class="cc" style="margin-top:20px">
+      <div class="cc-title">Distribución por Programa — Pipeline CRM</div>
+      <div class="bar-chart">
+        <div class="br">
+          <div class="bn">Fotografía Forense</div>
+          <div class="bt"><div class="bf" style="width:85.7%;background:linear-gradient(90deg,#2a8a54,#5ecb8a)"></div></div>
+          <div class="bv" style="color:#5ecb8a">18</div>
+        </div>
+        <div class="br">
+          <div class="bn">Manejo Reproductivo Caprino</div>
+          <div class="bt"><div class="bf" style="width:9.5%;background:linear-gradient(90deg,#39d0b0,#6ee8d0)"></div></div>
+          <div class="bv" style="color:#39d0b0">2</div>
+        </div>
+        <div class="br">
+          <div class="bn">Filosofía Realista</div>
+          <div class="bt"><div class="bf" style="width:4.8%;background:linear-gradient(90deg,#bc8cff,#d4b0ff)"></div></div>
+          <div class="bv" style="color:#bc8cff">1</div>
+        </div>
+      </div>
+      <div class="nb nb-b" style="margin-top:14px">
+        💡 La concentración en Fotografía Forense (85.7%) refleja el volumen de la campaña activa. A medida que las campañas de Gerontología y Gestión de Negocios conviertan consultas en leads calificados, la distribución se diversificará durante junio.
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       04 · TRANSFORMACIÓN OPERATIVA
+  ════════════════════════════════════ -->
+  <section>
+    <div class="sec-label">04 — Transformación Operativa CEPID · Mayo 2026</div>
+
+    <div class="section-intro">
+      <strong>Mayo marcó el inicio de una nueva etapa operativa para CEPID</strong>, incorporando herramientas y procesos que permiten trazabilidad comercial, seguimiento de oportunidades y escalabilidad del área. La incorporación del CRM Odoo y el Chatroom como canales únicos de gestión representa un cambio estructural en la forma en que el equipo gestiona su operación comercial.
+    </div>
+
+    <div class="two-col">
+      <!-- TIMELINE -->
+      <div class="cc">
+        <div class="cc-title">Capacitaciones Realizadas · Mayo 2026</div>
+        <div class="timeline">
+          <div class="tl-item" style="--dot-c:#2a8a54">
+            <div class="tl-dot"></div>
+            <div class="tl-date">MAYO 2026 · CAPACITACIÓN 1</div>
+            <div class="tl-title">Inducción al CRM Odoo + Chatroom</div>
+            <div class="tl-desc">Introducción a la filosofía de gestión centralizada. Recorrido por la plataforma Odoo y presentación del Chatroom como canal único de recepción de consultas, reemplazando el seguimiento disperso.</div>
+          </div>
+          <div class="tl-item" style="--dot-c:#2a8a54">
+            <div class="tl-dot"></div>
+            <div class="tl-date">MAYO 2026 · CAPACITACIÓN 2</div>
+            <div class="tl-title">Contactos, Pipeline y Etiquetado por Programa</div>
+            <div class="tl-desc">Carga de contactos, configuración de etapas del pipeline, uso de etiquetas por programa y establecimiento de la regla de seguimiento en 48 horas como protocolo estándar del equipo.</div>
+          </div>
+          <div class="tl-item" style="--dot-c:#2a8a54">
+            <div class="tl-dot"></div>
+            <div class="tl-date">MAYO 2026 · CAPACITACIÓN 3</div>
+            <div class="tl-title">Gestión de Leads con Datos Reales</div>
+            <div class="tl-desc">Práctica con leads en tiempo real. Consolidación del Chatroom como bandeja de entrada única. Simulación de ciclo completo lead → propuesta → precio → cierre.</div>
+          </div>
+          <div class="tl-item" style="--dot-c:#5ecb8a">
+            <div class="tl-dot" style="background:#5ecb8a"></div>
+            <div class="tl-date">22 DE MAYO 2026 · ADOPCIÓN TOTAL</div>
+            <div class="tl-title">🚀 CEPID 100% operativo en Odoo</div>
+            <div class="tl-desc">Fin del seguimiento manual fragmentado. Todo el equipo gestiona leads, oportunidades y comunicaciones exclusivamente dentro del CRM. Inicio del registro formal y trazable de la actividad comercial.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT CHANGED -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="cc" style="flex:1">
+          <div class="cc-title">Qué Cambió · Antes vs Ahora</div>
+          <div class="cmp-row">
+            <div class="cmp-lbl" style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Aspecto</div>
+            <div class="cmp-old" style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase">Antes</div>
+            <div class="cmp-new" style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase">Ahora</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-lbl">Seguimiento de leads</div>
+            <div class="cmp-old">Manual y disperso</div>
+            <div class="cmp-new">CRM centralizado</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-lbl">Canal de consultas</div>
+            <div class="cmp-old">WhatsApp, mail, teléfono sin registro</div>
+            <div class="cmp-new">Chatroom unificado</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-lbl">Visibilidad del pipeline</div>
+            <div class="cmp-old">Ninguna</div>
+            <div class="cmp-new">Trazabilidad total</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-lbl">Protocolo de seguimiento</div>
+            <div class="cmp-old">Sin estándar</div>
+            <div class="cmp-new">Regla 48 horas</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-lbl">Reporte comercial</div>
+            <div class="cmp-old">Imposible</div>
+            <div class="cmp-new">Exportable desde Odoo</div>
+          </div>
+        </div>
+        <div class="nb nb-g">
+          🎯 <strong>La capacidad operativa instalada en mayo</strong> es el activo más importante del período. Junio será el primer mes en que CEPID opera con infraestructura comercial profesional desde el día 1.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       05 · WORKETING — POSICIONAMIENTO
+  ════════════════════════════════════ -->
+  <section>
+    <div class="sec-label">05 — Posicionamiento Institucional · Evento Worketing</div>
+
+    <div class="two-col" style="align-items:start">
+      <div class="worketing-card">
+        <div class="wk-tag">Evento Colaborativo · 27 Mayo 2026</div>
+        <div class="wk-title">Worketing</div>
+        <div class="wk-sub">Marketing de verdad — UCCuyo San Luis</div>
+        <div class="wk-body">
+          Worketing fue una <strong>iniciativa conjunta entre Lógica y la Universidad Católica de Cuyo</strong> para acercar experiencias reales del mundo del marketing y los negocios a profesionales y equipos de San Luis.<br><br>
+          El evento reunió a <strong>más de 150 asistentes</strong> y funcionó como un espacio de intercambio de casos reales, aprendizajes y miradas sobre el trabajo cotidiano en marketing, emprendimiento e innovación.<br><br>
+          <strong>Posiciona a UCCuyo y CEPID como actores activos dentro del ecosistema empresarial y profesional local</strong>, generando visibilidad institucional más allá de la captación inmediata y sentando las bases para futuros espacios de formación y vinculación.<br><br>
+          🌐 <a href="https://worketing.com.ar" target="_blank" style="color:var(--teal);text-decoration:none">worketing.com.ar</a> · Organizado con soporte IT de Baboons ERP
+        </div>
+        <div class="wk-stat">
+          <div class="wk-s">
+            <div class="val">+150</div>
+            <div class="lbl">Asistentes</div>
+          </div>
+          <div class="wk-s">
+            <div class="val">27/05</div>
+            <div class="lbl">Fecha</div>
+          </div>
+          <div class="wk-s">
+            <div class="val">SL</div>
+            <div class="lbl">San Luis</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="cc">
+          <div class="cc-title">Impacto Institucional · Qué genera Worketing para CEPID</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(48,54,61,.4)">
+              <div style="font-size:18px">🏛️</div>
+              <div>
+                <div style="font-size:12.5px;font-weight:600;margin-bottom:3px">Visibilidad institucional ampliada</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.6">UCCuyo y CEPID se posicionan como espacios que impulsan la formación aplicada y el vínculo con el sector productivo, más allá de la captación de inscriptos.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(48,54,61,.4)">
+              <div style="font-size:18px">🤝</div>
+              <div>
+                <div style="font-size:12.5px;font-weight:600;margin-bottom:3px">Red de contactos calificados</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.6">Más de 150 profesionales del ecosistema local interactuaron con la propuesta de valor de la Universidad, generando un canal de difusión orgánico.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;padding:10px 0">
+              <div style="font-size:18px">🌱</div>
+              <div>
+                <div style="font-size:12.5px;font-weight:600;margin-bottom:3px">Base para formación continua</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.6">El evento sienta las bases para generar espacios periódicos de formación y conversación sobre marketing, negocios e innovación vinculados a CEPID.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nb nb-g">
+          📌 <strong>Junio cierra el ciclo:</strong> la experiencia Worketing se documenta y se integra a la estrategia de posicionamiento de CEPID como unidad activa de formación y vinculación empresarial.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       06 · OBJETIVOS JUNIO
+  ════════════════════════════════════ -->
+  <section>
+    <div class="sec-label">06 — Objetivos Esperados · Junio 2026</div>
+
+    <div class="section-intro">
+      Junio no se mide solo por conversaciones o campañas. El éxito del mes se define por <strong>conversión real, adopción plena del sistema y capacidad operativa instalada</strong>. Es el primer período donde todos los indicadores corren desde el día 1 con infraestructura comercial completa.
+    </div>
+
+    <div class="obj-grid">
+      <div class="obj-card" style="--obj-c:#3fb950">
+        <div class="obj-num" style="color:#3fb950">01</div>
+        <div class="obj-title">Primer mes completo de trazabilidad en Odoo</div>
+        <div class="obj-text">Junio será el primer período con 30 días de datos en CRM, permitiendo análisis real del ciclo completo lead → conversión y ajuste de objetivos con base empírica.</div>
+        <span class="obj-kpi" style="background:rgba(63,185,80,.12);border-color:rgba(63,185,80,.25);color:#3fb950">KPI: pipeline completo documentado</span>
+      </div>
+      <div class="obj-card" style="--obj-c:#e8a838">
+        <div class="obj-num" style="color:#e8a838">02</div>
+        <div class="obj-title">Incrementar el seguimiento efectivo sobre leads</div>
+        <div class="obj-text">Con el CRM operativo, aumentar el porcentaje de leads que reciben contacto dentro de las 48 horas. Los 13 leads en "Precio Enviado" son la primera conversión esperada.</div>
+        <span class="obj-kpi" style="background:rgba(232,168,56,.12);border-color:rgba(232,168,56,.25);color:#e8a838">KPI: tasa de respuesta 48hs &gt; 80%</span>
+      </div>
+      <div class="obj-card" style="--obj-c:#58a6ff">
+        <div class="obj-num" style="color:#58a6ff">03</div>
+        <div class="obj-title">Escalar campañas eficientes · CPL &lt; $0.60</div>
+        <div class="obj-text">Aplicar el modelo "Num nuevo" a todos los programas activos. Con las 5 líneas actuales promediando $0.57, el objetivo es mantener el CPL consolidado por debajo de $0.60 con mayor volumen.</div>
+        <span class="obj-kpi" style="background:rgba(88,166,255,.12);border-color:rgba(88,166,255,.25);color:#58a6ff">KPI: CPL consolidado &lt; $0.60 USD</span>
+      </div>
+      <div class="obj-card" style="--obj-c:#39d0b0">
+        <div class="obj-num" style="color:#39d0b0">04</div>
+        <div class="obj-title">Consolidar Odoo como canal único de gestión</div>
+        <div class="obj-text">Completar la capacitación de todas las áreas de CEPID. El CRM deja de ser una herramienta de una parte del equipo para convertirse en la operatoria estándar de toda el área.</div>
+        <span class="obj-kpi" style="background:rgba(57,208,176,.1);border-color:rgba(57,208,176,.22);color:#39d0b0">KPI: 100% áreas capacitadas</span>
+      </div>
+      <div class="obj-card" style="--obj-c:#5ecb8a">
+        <div class="obj-num" style="color:#5ecb8a">05</div>
+        <div class="obj-title">Posicionar CEPID como unidad activa de formación</div>
+        <div class="obj-text">Cerrar el ciclo Worketing documentando el impacto y continuar el soporte estratégico de Marketing para las diplomaturas y actividades de CEPID, consolidando su presencia en el ecosistema local.</div>
+        <span class="obj-kpi">KPI: nuevas diplomaturas con estrategia definida</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>Informe elaborado por <strong>Logica Consultoría</strong> · Martín, San Luis, Argentina</div>
+  <div>Fuentes: Odoo CRM + Meta Ads Manager · Período: Mayo 2026 · Confidencial</div>
+</footer>
+</body>
+</html>
